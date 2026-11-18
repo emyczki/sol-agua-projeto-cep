@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
@@ -10,17 +11,17 @@
 
     <meta name="theme-color" content="#05070b">
 
-    <title>Sol + Água | Absorção, Reflexão e Transmissão</title>
+    <title>Sol + Água | Radiação Solar</title>
 
-    <!-- CSS EXTERNO -->
+    <!-- CSS DO PROJETO -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =========================
+    <!-- ==================================================
          CABEÇALHO
-    ========================== -->
+    =================================================== -->
 
     <header class="topo">
 
@@ -31,22 +32,32 @@
         <nav class="menu" aria-label="Menu principal">
 
             <a href="#inicio">Início</a>
+
             <a href="#conceitos">Conceitos</a>
+
             <a href="#simulador">Simulador</a>
+
             <a href="#piscina">Piscina</a>
+
             <a href="#robotica">Robótica</a>
+
             <a href="#acessibilidade">Acessibilidade</a>
+
             <a href="#perguntas">Perguntas</a>
 
         </nav>
 
         <div class="acessibilidade-topo">
 
-            <button onclick="aumentarTexto()" aria-label="Aumentar tamanho do texto">
+            <button
+                onclick="aumentarTexto()"
+                aria-label="Aumentar tamanho do texto">
                 A+
             </button>
 
-            <button onclick="altoContraste()" aria-label="Ativar alto contraste">
+            <button
+                onclick="altoContraste()"
+                aria-label="Ativar alto contraste">
                 ◐
             </button>
 
@@ -55,11 +66,15 @@
     </header>
 
 
-    <!-- =========================
-         INÍCIO
-    ========================== -->
+    <!-- ==================================================
+         CONTEÚDO PRINCIPAL
+    =================================================== -->
 
     <main>
+
+        <!-- ==================================================
+             HERO
+        =================================================== -->
 
         <section id="inicio" class="hero">
 
@@ -75,9 +90,9 @@
                 </h1>
 
                 <p class="subtitulo">
-                    Entendendo como a radiação solar interage com diferentes
-                    materiais e como isso pode ser aplicado ao aquecimento
-                    da piscina olímpica.
+                    Entendendo como a radiação solar interage
+                    com diferentes materiais e como isso pode
+                    ser aplicado ao aquecimento da piscina olímpica.
                 </p>
 
                 <div class="botoes-hero">
@@ -94,14 +109,19 @@
 
             </div>
 
+
             <div class="sol-visual" aria-hidden="true">
 
-                <div class="sol">☀</div>
+                <div class="sol">
+                    ☀
+                </div>
 
                 <div class="raios">
+
                     <span>↘</span>
                     <span>↓</span>
                     <span>↙</span>
+
                 </div>
 
                 <div class="agua">
@@ -113,15 +133,17 @@
         </section>
 
 
-        <!-- =========================
+        <!-- ==================================================
              INTRODUÇÃO
-        ========================== -->
+        =================================================== -->
 
         <section class="secao introducao">
 
             <div class="cabecalho-secao">
 
-                <span>01 • INTRODUÇÃO</span>
+                <span>
+                    01 • INTRODUÇÃO
+                </span>
 
                 <h2>
                     O que acontece quando a luz do Sol encontra um material?
@@ -132,16 +154,18 @@
             <div class="texto-introducao">
 
                 <p>
-                    A radiação solar transporta energia. Quando essa radiação
-                    atinge uma superfície, parte dela pode ser <strong>absorvida</strong>,
-                    parte pode ser <strong>refletida</strong> e outra parte pode ser
+                    A radiação solar transporta energia. Quando essa
+                    radiação atinge uma superfície, parte dela pode ser
+                    <strong>absorvida</strong>, parte pode ser
+                    <strong>refletida</strong> e outra parte pode ser
                     <strong>transmitida</strong> através do material.
                 </p>
 
                 <p>
-                    Esses três fenômenos são importantes para entender o
-                    comportamento da luz, o aquecimento de objetos e também
-                    sistemas maiores, como uma piscina aquecida pela energia solar.
+                    Esses três fenômenos são importantes para entender
+                    o comportamento da luz, o aquecimento de objetos
+                    e também sistemas maiores, como uma piscina
+                    aquecida pela energia solar.
                 </p>
 
             </div>
@@ -149,15 +173,17 @@
         </section>
 
 
-        <!-- =========================
+        <!-- ==================================================
              CONCEITOS
-        ========================== -->
+        =================================================== -->
 
         <section id="conceitos" class="secao">
 
             <div class="cabecalho-secao">
 
-                <span>02 • FÍSICA</span>
+                <span>
+                    02 • FÍSICA
+                </span>
 
                 <h2>
                     Os três caminhos da radiação
@@ -264,15 +290,17 @@
         </section>
 
 
-        <!-- =========================
+        <!-- ==================================================
              SIMULADOR
-        ========================== -->
+        =================================================== -->
 
         <section id="simulador" class="secao simulador-secao">
 
             <div class="cabecalho-secao">
 
-                <span>03 • INTERATIVIDADE</span>
+                <span>
+                    03 • INTERATIVIDADE
+                </span>
 
                 <h2>
                     Simulador da radiação solar
@@ -301,17 +329,21 @@
                         max="100"
                         value="70"
                         oninput="atualizarSimulador(this.value)"
-                    >
+                        aria-label="Intensidade de absorção">
 
                     <div class="valor-slider">
 
-                        <span>0%</span>
+                        <span>
+                            0%
+                        </span>
 
                         <strong id="valor">
                             70%
                         </strong>
 
-                        <span>100%</span>
+                        <span>
+                            100%
+                        </span>
 
                     </div>
 
@@ -390,6 +422,7 @@
                     <div class="temperatura">
 
                         Temperatura estimada:
+
                         <strong id="temperatura">
                             30°C
                         </strong>
@@ -403,15 +436,17 @@
         </section>
 
 
-        <!-- =========================
+        <!-- ==================================================
              COMPARAÇÃO
-        ========================== -->
+        =================================================== -->
 
         <section id="comparacao" class="secao">
 
             <div class="cabecalho-secao">
 
-                <span>04 • COMPARAÇÃO</span>
+                <span>
+                    04 • COMPARAÇÃO
+                </span>
 
                 <h2>
                     Superfícies claras e escuras
@@ -471,15 +506,17 @@
         </section>
 
 
-        <!-- =========================
+        <!-- ==================================================
              PISCINA
-        ========================== -->
+        =================================================== -->
 
         <section id="piscina" class="secao piscina-secao">
 
             <div class="cabecalho-secao">
 
-                <span>05 • APLICAÇÃO REAL</span>
+                <span>
+                    05 • APLICAÇÃO REAL
+                </span>
 
                 <h2>
                     A conexão com a piscina olímpica
@@ -493,21 +530,22 @@
                 <div class="piscina-texto">
 
                     <p>
-                        O conhecimento sobre radiação solar pode ser aplicado
-                        no estudo do aquecimento da água de uma piscina.
+                        O conhecimento sobre radiação solar pode ser
+                        aplicado no estudo do aquecimento da água
+                        de uma piscina.
                     </p>
 
                     <p>
-                        Quando a radiação solar atinge determinadas superfícies,
-                        parte da energia é absorvida e transformada em calor.
-                        Esse processo pode contribuir para aumentar a temperatura
-                        da água.
+                        Quando a radiação solar atinge determinadas
+                        superfícies, parte da energia é absorvida
+                        e transformada em calor. Esse processo pode
+                        contribuir para aumentar a temperatura da água.
                     </p>
 
                     <p>
-                        No nosso projeto, a piscina é utilizada como exemplo
-                        para relacionar os conteúdos de Física, Tecnociência,
-                        Programação e Robótica.
+                        No nosso projeto, a piscina é utilizada como
+                        exemplo para relacionar os conteúdos de Física,
+                        Tecnociência, Programação e Robótica.
                     </p>
 
                 </div>
@@ -516,29 +554,63 @@
                 <div class="piscina-diagrama">
 
                     <div class="etapa">
-                        <span>☀️</span>
-                        <strong>Sol</strong>
-                        <small>Radiação solar</small>
+
+                        <span>
+                            ☀️
+                        </span>
+
+                        <strong>
+                            Sol
+                        </strong>
+
+                        <small>
+                            Radiação solar
+                        </small>
+
                     </div>
+
 
                     <div class="seta">
                         ↓
                     </div>
 
+
                     <div class="etapa">
-                        <span>🌡️</span>
-                        <strong>Absorção</strong>
-                        <small>Energia vira calor</small>
+
+                        <span>
+                            🌡️
+                        </span>
+
+                        <strong>
+                            Absorção
+                        </strong>
+
+                        <small>
+                            Energia vira calor
+                        </small>
+
                     </div>
+
 
                     <div class="seta">
                         ↓
                     </div>
 
+
                     <div class="etapa">
-                        <span>💧</span>
-                        <strong>Água</strong>
-                        <small>Aumento da temperatura</small>
+
+                        <span>
+                            💧
+                        </span>
+
+                        <strong>
+                            Água
+                        </strong>
+
+                        <small>
+                            Aumento da temperatura
+                        </small>
+
                     </div>
 
                 </div>
@@ -548,15 +620,17 @@
         </section>
 
 
-        <!-- =========================
+        <!-- ==================================================
              ROBÓTICA
-        ========================== -->
+        =================================================== -->
 
         <section id="robotica" class="secao">
 
             <div class="cabecalho-secao">
 
-                <span>06 • ROBÓTICA</span>
+                <span>
+                    06 • ROBÓTICA
+                </span>
 
                 <h2>
                     Onde entra a tecnologia?
@@ -664,15 +738,17 @@
         </section>
 
 
-        <!-- =========================
+        <!-- ==================================================
              TECNOCIÊNCIA
-        ========================== -->
+        =================================================== -->
 
         <section class="secao tecnociencia">
 
             <div class="cabecalho-secao">
 
-                <span>07 • TECNOCIÊNCIA</span>
+                <span>
+                    07 • TECNOCIÊNCIA
+                </span>
 
                 <h2>
                     Ciência + Tecnologia
@@ -743,22 +819,26 @@
         </section>
 
 
-        <!-- =========================
+        <!-- ==================================================
              ACESSIBILIDADE
-        ========================== -->
+        =================================================== -->
 
         <section id="acessibilidade" class="secao acessibilidade-secao">
 
             <div class="cabecalho-secao">
 
-                <span>08 • ACESSIBILIDADE</span>
+                <span>
+                    08 • ACESSIBILIDADE
+                </span>
 
                 <h2>
                     Um site para todos
                 </h2>
 
                 <p>
-                    A acessibilidade faz parte da proposta do projeto.
+                    A acessibilidade faz parte da proposta do projeto,
+                    permitindo que diferentes pessoas possam utilizar
+                    e compreender o conteúdo.
                 </p>
 
             </div>
@@ -768,7 +848,9 @@
 
                 <div class="acessibilidade-card">
 
-                    <span>🔤</span>
+                    <span>
+                        🔤
+                    </span>
 
                     <h3>
                         Texto ampliado
@@ -784,7 +866,9 @@
 
                 <div class="acessibilidade-card">
 
-                    <span>◐</span>
+                    <span>
+                        ◐
+                    </span>
 
                     <h3>
                         Alto contraste
@@ -800,7 +884,9 @@
 
                 <div class="acessibilidade-card">
 
-                    <span>⌨️</span>
+                    <span>
+                        ⌨️
+                    </span>
 
                     <h3>
                         Navegação
@@ -814,17 +900,22 @@
                 </div>
 
 
+                <!-- VLibras -->
+
                 <div class="acessibilidade-card">
 
-                    <span>🖐️</span>
+                    <span>
+                        🤟
+                    </span>
 
                     <h3>
-                        Libras
+                        VLibras
                     </h3>
 
                     <p>
-                        O projeto pode receber recursos de acessibilidade
-                        em Libras para ampliar o acesso ao conteúdo.
+                        O site possui integração com o VLibras,
+                        recurso que auxilia na tradução do conteúdo
+                        para Língua Brasileira de Sinais.
                     </p>
 
                 </div>
@@ -834,22 +925,24 @@
         </section>
 
 
-        <!-- =========================
+        <!-- ==================================================
              PERGUNTAS
-        ========================== -->
+        =================================================== -->
 
         <section id="perguntas" class="secao perguntas-secao">
 
             <div class="cabecalho-secao">
 
-                <span>09 • REVISÃO</span>
+                <span>
+                    09 • REVISÃO
+                </span>
 
                 <h2>
                     Perguntas e respostas
                 </h2>
 
                 <p>
-                    Teste seus conhecimentos sobre o conteúdo.
+                    Revise os principais conceitos estudados no projeto.
                 </p>
 
             </div>
@@ -865,8 +958,8 @@
 
                     <p>
                         Porque geralmente refletem uma menor quantidade
-                        da luz visível e absorvem uma maior parte da energia
-                        recebida.
+                        da luz visível e absorvem uma maior parte da
+                        energia recebida.
                     </p>
 
                 </details>
@@ -879,8 +972,9 @@
                     </summary>
 
                     <p>
-                        Na absorção, a energia da radiação é recebida pelo material.
-                        Na reflexão, a radiação retorna para o ambiente.
+                        Na absorção, a energia da radiação é recebida
+                        pelo material. Na reflexão, a radiação retorna
+                        para o ambiente.
                     </p>
 
                 </details>
@@ -893,9 +987,10 @@
                     </summary>
 
                     <p>
-                        Sim. Uma cobertura transparente pode permitir a passagem
-                        da radiação solar e reduzir parte das perdas de calor,
-                        contribuindo para o aquecimento da água.
+                        Sim. Uma cobertura transparente pode permitir
+                        a passagem da radiação solar e reduzir parte
+                        das perdas de calor, contribuindo para o
+                        aquecimento da água.
                     </p>
 
                 </details>
@@ -908,8 +1003,9 @@
                     </summary>
 
                     <p>
-                        Os sensores permitem medir informações do ambiente,
-                        como temperatura, ajudando o sistema a tomar decisões.
+                        Os sensores permitem medir informações do
+                        ambiente, como temperatura, ajudando o sistema
+                        a tomar decisões.
                     </p>
 
                 </details>
@@ -934,15 +1030,17 @@
         </section>
 
 
-        <!-- =========================
+        <!-- ==================================================
              CLIMATOLOGIA
-        ========================== -->
+        =================================================== -->
 
         <section class="secao climatologia">
 
             <div class="cabecalho-secao">
 
-                <span>10 • CLIMATOLOGIA</span>
+                <span>
+                    10 • CLIMATOLOGIA
+                </span>
 
                 <h2>
                     Por que estudar a radiação solar?
@@ -954,8 +1052,8 @@
             <div class="clima-conteudo">
 
                 <p>
-                    A radiação solar é uma das principais fontes de energia
-                    que movimentam os processos naturais da Terra.
+                    A radiação solar é uma das principais fontes de
+                    energia que movimentam os processos naturais da Terra.
                 </p>
 
                 <p>
@@ -964,8 +1062,9 @@
                 </p>
 
                 <p>
-                    Por isso, compreender a absorção, a reflexão e a transmissão
-                    ajuda também a estudar questões ambientais e climáticas.
+                    Por isso, compreender a absorção, a reflexão e a
+                    transmissão ajuda também a estudar questões ambientais
+                    e climáticas.
                 </p>
 
             </div>
@@ -973,9 +1072,9 @@
         </section>
 
 
-        <!-- =========================
+        <!-- ==================================================
              CONCLUSÃO
-        ========================== -->
+        =================================================== -->
 
         <section class="conclusao">
 
@@ -1011,9 +1110,9 @@
     </main>
 
 
-    <!-- =========================
+    <!-- ==================================================
          RODAPÉ
-    ========================== -->
+    =================================================== -->
 
     <footer class="rodape">
 
@@ -1031,10 +1130,21 @@
 
         <div class="rodape-tecnologias">
 
-            <span>Física</span>
-            <span>Programação</span>
-            <span>Robótica</span>
-            <span>Tecnociência</span>
+            <span>
+                Física
+            </span>
+
+            <span>
+                Programação
+            </span>
+
+            <span>
+                Robótica
+            </span>
+
+            <span>
+                Tecnociência
+            </span>
 
         </div>
 
@@ -1045,12 +1155,46 @@
     </footer>
 
 
-    <!-- =========================
-         JAVASCRIPT EXTERNO
-    ========================== -->
+    <!-- ==================================================
+         VLibras
+    =================================================== -->
+
+    <div vw class="enabled">
+
+        <div
+            vw-access-button
+            class="active">
+        </div>
+
+        <div vw-plugin-wrapper>
+
+            <div class="vw-plugin-top-wrapper">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         SCRIPT OFICIAL DO VLibras
+    =================================================== -->
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+    <script>
+        new window.VLibras.Widget(
+            'https://vlibras.gov.br/app'
+        );
+    </script>
+
+
+    <!-- ==================================================
+         JAVASCRIPT DO PROJETO
+    =================================================== -->
 
     <script src="script.js"></script>
 
 </body>
 
-            </html>
+    </html>
