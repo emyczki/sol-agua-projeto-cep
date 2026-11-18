@@ -3,1826 +3,1054 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="Projeto Integrador CEP - Absorção, Reflexão e Transmissão da Radiação Solar">
+        content="Projeto Integrador CEP sobre absorção, reflexão e transmissão da radiação solar, integrando Física, Tecnociência, Programação e Robótica.">
 
-    <title>Sol + Água | Radiação Solar</title>
+    <meta name="theme-color" content="#05070b">
 
-    <style>
+    <title>Sol + Água | Absorção, Reflexão e Transmissão</title>
 
-        /* =========================
-           CONFIGURAÇÕES GERAIS
-        ========================= */
-
-        :root {
-            --preto: #05080d;
-            --preto2: #09111b;
-            --azul: #70d7ff;
-            --azul-escuro: #10283a;
-            --amarelo: #ffd45c;
-            --branco: #f5f8fc;
-            --cinza: #aab7c8;
-            --linha: #203247;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-
-            background:
-                radial-gradient(
-                    circle at 15% 10%,
-                    #10283a 0,
-                    transparent 30%
-                ),
-                linear-gradient(
-                    180deg,
-                    #05080d,
-                    #07101a 55%,
-                    #05080d
-                );
-
-            color: var(--branco);
-
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button,
-        input {
-            font: inherit;
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-        /* =========================
-           ACESSIBILIDADE
-        ========================= */
-
-        :focus-visible {
-            outline: 3px solid var(--amarelo);
-            outline-offset: 3px;
-        }
-
-        .pular-conteudo {
-            position: absolute;
-            left: -9999px;
-        }
-
-        .pular-conteudo:focus {
-            left: 15px;
-            top: 15px;
-            z-index: 999;
-            background: #000;
-            padding: 10px 15px;
-            border-radius: 8px;
-        }
-
-        /* =========================
-           MENU
-        ========================= */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 20;
-
-            background: rgba(5, 8, 13, 0.92);
-
-            backdrop-filter: blur(14px);
-
-            border-bottom: 1px solid var(--linha);
-        }
-
-        nav {
-            max-width: 1200px;
-
-            margin: auto;
-
-            padding: 14px 20px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-        .logo {
-            font-weight: 900;
-
-            font-size: 1rem;
-
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--azul);
-        }
-
-        nav ul {
-            display: flex;
-
-            gap: 20px;
-
-            list-style: none;
-
-            flex-wrap: wrap;
-        }
-
-        nav ul a {
-            color: var(--cinza);
-
-            font-size: 0.9rem;
-
-            transition: 0.2s;
-        }
-
-        nav ul a:hover {
-            color: var(--azul);
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 720px;
-
-            display: grid;
-
-            place-items: center;
-
-            text-align: center;
-
-            padding: 80px 20px;
-
-            position: relative;
-
-            overflow: hidden;
-        }
-
-        .sol {
-            position: absolute;
-
-            width: 420px;
-
-            height: 420px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    #fff9b0 0%,
-                    #ffd45c 35%,
-                    #ff9f2e 60%,
-                    transparent 72%
-                );
-
-            opacity: 0.2;
-
-            right: -100px;
-
-            top: -100px;
-        }
-
-        .hero-conteudo {
-            max-width: 1000px;
-
-            position: relative;
-        }
-
-        .tag {
-            color: var(--azul);
-
-            font-weight: 800;
-
-            font-size: 0.8rem;
-
-            letter-spacing: 2px;
-
-            text-transform: uppercase;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 7vw, 5.5rem);
-
-            line-height: 1;
-
-            margin: 20px 0;
-
-            background:
-                linear-gradient(
-                    100deg,
-                    #ffffff,
-                    var(--azul),
-                    #ffffff
-                );
-
-            -webkit-background-clip: text;
-
-            background-clip: text;
-
-            color: transparent;
-        }
-
-        .hero p {
-            max-width: 780px;
-
-            margin: auto;
-
-            color: var(--cinza);
-
-            font-size: 1.05rem;
-        }
-
-        .botoes {
-            margin-top: 30px;
-
-            display: flex;
-
-            justify-content: center;
-
-            gap: 12px;
-
-            flex-wrap: wrap;
-        }
-
-        .botao {
-            display: inline-block;
-
-            padding: 12px 20px;
-
-            border-radius: 999px;
-
-            border: 1px solid var(--linha);
-
-            background: var(--preto2);
-
-            transition: 0.2s;
-        }
-
-        .botao:hover {
-            transform: translateY(-2px);
-        }
-
-        .botao-principal {
-            background: var(--azul);
-
-            color: #031018;
-
-            border-color: var(--azul);
-
-            font-weight: 800;
-        }
-
-        /* =========================
-           ESTRUTURA
-        ========================= */
-
-        main {
-            max-width: 1200px;
-
-            margin: auto;
-
-            padding: 30px 20px 80px;
-        }
-
-        section {
-            padding: 75px 0;
-        }
-
-        .cabecalho-secao {
-            margin-bottom: 30px;
-        }
-
-        .numero {
-            color: var(--amarelo);
-
-            font-size: 0.8rem;
-
-            font-weight: 800;
-
-            letter-spacing: 2px;
-
-            text-transform: uppercase;
-        }
-
-        h2 {
-            font-size: clamp(1.9rem, 4vw, 3rem);
-
-            margin: 8px 0 12px;
-        }
-
-        .descricao {
-            color: var(--cinza);
-
-            max-width: 800px;
-        }
-
-        /* =========================
-           CARDS
-        ========================= */
-
-        .grade {
-            display: grid;
-
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 18px;
-        }
-
-        .card {
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(16, 27, 41, 0.96),
-                    rgba(8, 14, 23, 0.96)
-                );
-
-            border: 1px solid var(--linha);
-
-            border-radius: 20px;
-
-            padding: 25px;
-
-            box-shadow:
-                0 18px 45px rgba(0, 0, 0, 0.3);
-        }
-
-        .card h3 {
-            color: var(--azul);
-
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: var(--cinza);
-        }
-
-        .icone {
-            font-size: 2rem;
-
-            margin-bottom: 10px;
-        }
-
-        /* =========================
-           FÓRMULA
-        ========================= */
-
-        .formula {
-            margin: 25px auto;
-
-            padding: 22px;
-
-            max-width: 650px;
-
-            text-align: center;
-
-            border: 1px solid #31506c;
-
-            background: #081522;
-
-            border-radius: 16px;
-
-            font-size: 1.5rem;
-
-            color: var(--amarelo);
-
-            font-weight: 900;
-        }
-
-        /* =========================
-           SIMULADOR
-        ========================= */
-
-        .simulador {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 20px;
-        }
-
-        .controles {
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 18px;
-        }
-
-        .controles label {
-            color: var(--cinza);
-        }
-
-        input[type="range"] {
-            width: 100%;
-
-            accent-color: var(--azul);
-        }
-
-        .valores {
-            display: grid;
-
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 10px;
-        }
-
-        .valor {
-            background: #07101a;
-
-            border: 1px solid var(--linha);
-
-            border-radius: 12px;
-
-            padding: 15px;
-
-            text-align: center;
-        }
-
-        .valor strong {
-            display: block;
-
-            color: var(--azul);
-
-            font-size: 1.4rem;
-        }
-
-        .observacao {
-            color: var(--cinza);
-
-            font-size: 0.9rem;
-        }
-
-        /* =========================
-           VISUAL DO SIMULADOR
-        ========================= */
-
-        .visual {
-            min-height: 330px;
-
-            position: relative;
-
-            overflow: hidden;
-
-            display: grid;
-
-            place-items: center;
-        }
-
-        .raio {
-            position: absolute;
-
-            width: 70%;
-
-            height: 8px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    #ffd45c,
-                    #ffffff,
-                    transparent
-                );
-
-            transform: rotate(-24deg);
-
-            top: 35%;
-
-            left: 15%;
-
-            filter:
-                drop-shadow(
-                    0 0 12px #ffd45c
-                );
-        }
-
-        .superficie {
-            position: absolute;
-
-            bottom: 35px;
-
-            width: 70%;
-
-            height: 70px;
-
-            border-radius:
-                12px 12px 4px 4px;
-
-            background: #f1f1f1;
-
-            box-shadow:
-                0 -8px 25px rgba(255, 255, 255, 0.15);
-        }
-
-        .seta {
-            position: absolute;
-
-            color: var(--cinza);
-
-            font-size: 0.85rem;
-        }
-
-        .absorvida {
-            bottom: 115px;
-        }
-
-        .refletida {
-            top: 75px;
-
-            right: 25px;
-        }
-
-        .transmitida {
-            bottom: 10px;
-        }
-
-        /* =========================
-           COMPARAÇÃO
-        ========================= */
-
-        .comparacao {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 18px;
-        }
-
-        .barra {
-            height: 18px;
-
-            background: #1a2837;
-
-            border-radius: 999px;
-
-            overflow: hidden;
-
-            margin-top: 15px;
-        }
-
-        .preenchimento {
-            height: 100%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    var(--azul),
-                    var(--amarelo)
-                );
-        }
-
-        /* =========================
-           PISCINA
-        ========================= */
-
-        .piscina {
-            position: relative;
-
-            min-height: 360px;
-
-            overflow: hidden;
-
-            border-radius: 24px;
-
-            border: 1px solid #27506b;
-
-            background:
-                linear-gradient(
-                    #091421 0 38%,
-                    #0d5478 38% 100%
-                );
-        }
-
-        .piscina::before {
-            content: "";
-
-            position: absolute;
-
-            inset: 38% 0 0;
-
-            background:
-                repeating-linear-gradient(
-                    0deg,
-                    rgba(255,255,255,0.1) 0 2px,
-                    transparent 2px 20px
-                );
-
-            opacity: 0.4;
-        }
-
-        .piscina-conteudo {
-            position: absolute;
-
-            inset: 22px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: space-between;
-        }
-
-        .temperatura {
-            font-size: 4rem;
-
-            font-weight: 900;
-        }
-
-        .chips {
-            display: flex;
-
-            gap: 10px;
-
-            flex-wrap: wrap;
-        }
-
-        .chip {
-            padding: 8px 12px;
-
-            border-radius: 999px;
-
-            background: rgba(0, 0, 0, 0.45);
-
-            border: 1px solid rgba(255,255,255,0.2);
-
-            font-size: 0.85rem;
-        }
-
-        /* =========================
-           ROBÓTICA
-        ========================= */
-
-        .passos {
-            display: grid;
-
-            gap: 12px;
-        }
-
-        .passo {
-            display: grid;
-
-            grid-template-columns: 55px 1fr;
-
-            gap: 15px;
-
-            align-items: center;
-        }
-
-        .passo::before {
-            counter-increment: passo;
-
-            content: counter(passo);
-
-            width: 44px;
-
-            height: 44px;
-
-            border-radius: 50%;
-
-            display: grid;
-
-            place-items: center;
-
-            background: var(--azul);
-
-            color: #031018;
-
-            font-weight: 900;
-        }
-
-        .passos {
-            counter-reset: passo;
-        }
-
-        /* =========================
-           PERGUNTAS
-        ========================= */
-
-        .perguntas {
-            display: grid;
-
-            gap: 12px;
-        }
-
-        details {
-            background: var(--preto2);
-
-            border: 1px solid var(--linha);
-
-            border-radius: 14px;
-
-            padding: 17px 19px;
-        }
-
-        summary {
-            cursor: pointer;
-
-            font-weight: 800;
-        }
-
-        details p {
-            color: var(--cinza);
-
-            padding-top: 12px;
-        }
-
-        /* =========================
-           ACESSIBILIDADE
-        ========================= */
-
-        .acessibilidade {
-            position: fixed;
-
-            right: 15px;
-
-            bottom: 15px;
-
-            z-index: 30;
-
-            display: flex;
-
-            gap: 8px;
-
-            flex-wrap: wrap;
-        }
-
-        .acessibilidade button {
-            background: #ffffff;
-
-            color: #000000;
-
-            border: 0;
-
-            border-radius: 10px;
-
-            padding: 8px 11px;
-
-            font-weight: 800;
-        }
-
-        .texto-grande {
-            font-size: 112%;
-        }
-
-        .alto-contraste {
-            --preto: #000000;
-            --preto2: #000000;
-            --branco: #ffffff;
-            --cinza: #ffffff;
-            --azul: #00ffff;
-            --amarelo: #ffff00;
-            --linha: #ffffff;
-        }
-
-        /* =========================
-           RODAPÉ
-        ========================= */
-
-        footer {
-            border-top: 1px solid var(--linha);
-
-            padding: 35px 20px;
-
-            text-align: center;
-
-            color: var(--cinza);
-        }
-
-        footer strong {
-            color: var(--azul);
-        }
-
-        /* =========================
-           RESPONSIVIDADE
-        ========================= */
-
-        @media (max-width: 800px) {
-
-            nav ul {
-                display: none;
-            }
-
-            .grade {
-                grid-template-columns: 1fr;
-            }
-
-            .simulador {
-                grid-template-columns: 1fr;
-            }
-
-            .comparacao {
-                grid-template-columns: 1fr;
-            }
-
-            .valores {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                min-height: 650px;
-            }
-
-            .passo {
-                grid-template-columns: 48px 1fr;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            html {
-                scroll-behavior: auto;
-            }
-        }
-
-    </style>
+    <!-- CSS EXTERNO -->
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-<a class="pular-conteudo" href="#conteudo">
-    Pular para o conteúdo
-</a>
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
 
+    <header class="topo">
 
-<!-- =========================
-     MENU
-========================= -->
-
-<header>
-
-    <nav aria-label="Navegação principal">
-
-        <a href="#inicio" class="logo">
-            <span>☀</span> SOL + ÁGUA
-        </a>
-
-        <ul>
-
-            <li>
-                <a href="#conceitos">
-                    Conceitos
-                </a>
-            </li>
-
-            <li>
-                <a href="#simulador">
-                    Simulador
-                </a>
-            </li>
-
-            <li>
-                <a href="#piscina">
-                    Piscina
-                </a>
-            </li>
-
-            <li>
-                <a href="#robotica">
-                    Robótica
-                </a>
-            </li>
-
-            <li>
-                <a href="#perguntas">
-                    Perguntas
-                </a>
-            </li>
-
-        </ul>
-
-    </nav>
-
-</header>
-
-
-<!-- =========================
-     BOTÕES DE ACESSIBILIDADE
-========================= -->
-
-<div class="acessibilidade">
-
-    <button onclick="aumentarTexto()">
-        A+ Texto
-    </button>
-
-    <button onclick="altoContraste()">
-        Contraste
-    </button>
-
-</div>
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="hero" id="inicio">
-
-    <div class="sol"></div>
-
-    <div class="hero-conteudo">
-
-        <div class="tag">
-            Projeto Integrador CEP • 3º trimestre
+        <div class="logo">
+            ☀️ <span>Sol + Água</span>
         </div>
 
-        <h1>
-            Absorção, Reflexão e Transmissão da Radiação Solar
-        </h1>
+        <nav class="menu" aria-label="Menu principal">
 
-        <p>
-            Um site educacional e interativo para entender
-            como a radiação solar interage com diferentes
-            materiais e como esses conceitos se relacionam
-            ao aquecimento e à automação de uma piscina.
-        </p>
+            <a href="#inicio">Início</a>
+            <a href="#conceitos">Conceitos</a>
+            <a href="#simulador">Simulador</a>
+            <a href="#piscina">Piscina</a>
+            <a href="#robotica">Robótica</a>
+            <a href="#acessibilidade">Acessibilidade</a>
+            <a href="#perguntas">Perguntas</a>
 
-        <div class="botoes">
+        </nav>
 
-            <a
-                href="#simulador"
-                class="botao botao-principal">
-                Explorar simulador
-            </a>
+        <div class="acessibilidade-topo">
 
-            <a
-                href="#piscina"
-                class="botao">
-                Ver projeto da piscina
-            </a>
+            <button onclick="aumentarTexto()" aria-label="Aumentar tamanho do texto">
+                A+
+            </button>
+
+            <button onclick="altoContraste()" aria-label="Ativar alto contraste">
+                ◐
+            </button>
 
         </div>
 
-    </div>
-
-</section>
+    </header>
 
 
-<main id="conteudo">
+    <!-- =========================
+         INÍCIO
+    ========================== -->
 
+    <main>
 
-<!-- =========================
-     CONCEITOS
-========================= -->
+        <section id="inicio" class="hero">
 
-<section id="conceitos">
+            <div class="hero-conteudo">
 
-    <div class="cabecalho-secao">
+                <span class="etiqueta">
+                    PROJETO INTEGRADOR CEP • 3º TRIMESTRE
+                </span>
 
-        <div class="numero">
-            01 • Óptica
-        </div>
+                <h1>
+                    Absorção, Reflexão e Transmissão
+                    da Radiação Solar
+                </h1>
 
-        <h2>
-            O que acontece quando a luz encontra um material?
-        </h2>
+                <p class="subtitulo">
+                    Entendendo como a radiação solar interage com diferentes
+                    materiais e como isso pode ser aplicado ao aquecimento
+                    da piscina olímpica.
+                </p>
 
-        <p class="descricao">
-            Quando a radiação solar chega a uma superfície,
-            parte pode ser absorvida, refletida ou transmitida.
-            A proporção depende das propriedades do material
-            e das condições do ambiente.
-        </p>
+                <div class="botoes-hero">
 
-    </div>
+                    <a href="#conceitos" class="botao">
+                        Explorar o projeto
+                    </a>
 
+                    <a href="#simulador" class="botao secundario">
+                        Testar simulador
+                    </a>
 
-    <div class="grade">
+                </div>
 
-
-        <article class="card">
-
-            <div class="icone">
-                🔥
             </div>
 
-            <h3>
-                Absorção
-            </h3>
+            <div class="sol-visual" aria-hidden="true">
 
-            <p>
-                É a parte da radiação que é recebida pelo
-                material e convertida principalmente em
-                energia térmica, contribuindo para seu
-                aquecimento.
-            </p>
+                <div class="sol">☀</div>
 
-        </article>
+                <div class="raios">
+                    <span>↘</span>
+                    <span>↓</span>
+                    <span>↙</span>
+                </div>
 
+                <div class="agua">
+                    ≋ ≋ ≋ ≋ ≋
+                </div>
 
-        <article class="card">
-
-            <div class="icone">
-                ↗️
             </div>
 
-            <h3>
-                Reflexão
-            </h3>
-
-            <p>
-                É a parcela da radiação que retorna para
-                o ambiente depois de atingir a superfície.
-            </p>
-
-        </article>
+        </section>
 
 
-        <article class="card">
+        <!-- =========================
+             INTRODUÇÃO
+        ========================== -->
 
-            <div class="icone">
-                💧
+        <section class="secao introducao">
+
+            <div class="cabecalho-secao">
+
+                <span>01 • INTRODUÇÃO</span>
+
+                <h2>
+                    O que acontece quando a luz do Sol encontra um material?
+                </h2>
+
             </div>
 
-            <h3>
-                Transmissão
-            </h3>
+            <div class="texto-introducao">
 
-            <p>
-                É a parcela da radiação que atravessa
-                o material. Materiais transparentes
-                permitem maior passagem de luz.
-            </p>
+                <p>
+                    A radiação solar transporta energia. Quando essa radiação
+                    atinge uma superfície, parte dela pode ser <strong>absorvida</strong>,
+                    parte pode ser <strong>refletida</strong> e outra parte pode ser
+                    <strong>transmitida</strong> através do material.
+                </p>
 
-        </article>
+                <p>
+                    Esses três fenômenos são importantes para entender o
+                    comportamento da luz, o aquecimento de objetos e também
+                    sistemas maiores, como uma piscina aquecida pela energia solar.
+                </p>
 
-    </div>
+            </div>
 
-
-    <div class="formula">
-        α + ρ + τ = 1
-    </div>
-
-    <p
-        class="descricao"
-        style="text-align:center;margin:auto">
-
-        α = absorção •
-        ρ = reflexão •
-        τ = transmissão
-
-    </p>
-
-</section>
+        </section>
 
 
-<!-- =========================
-     SIMULADOR
-========================= -->
+        <!-- =========================
+             CONCEITOS
+        ========================== -->
 
-<section id="simulador">
+        <section id="conceitos" class="secao">
 
-    <div class="cabecalho-secao">
+            <div class="cabecalho-secao">
 
-        <div class="numero">
-            02 • Interatividade
-        </div>
+                <span>02 • FÍSICA</span>
 
-        <h2>
-            Simulador da radiação solar
-        </h2>
+                <h2>
+                    Os três caminhos da radiação
+                </h2>
 
-        <p class="descricao">
-            Ajuste a intensidade da radiação e veja
-            uma representação simples da energia que
-            chega à superfície.
-        </p>
+                <p>
+                    Quando a radiação solar chega até uma superfície,
+                    ela pode seguir diferentes caminhos.
+                </p>
 
-    </div>
+            </div>
 
 
-    <div class="card simulador">
+            <div class="cards">
+
+                <!-- ABSORÇÃO -->
+
+                <article class="card">
+
+                    <div class="icone">
+                        🔥
+                    </div>
+
+                    <h3>
+                        Absorção
+                    </h3>
+
+                    <p>
+                        É quando o material recebe a energia da radiação
+                        e transforma parte dela em energia interna,
+                        contribuindo para o aquecimento.
+                    </p>
+
+                    <div class="formula">
+                        α = energia absorvida
+                    </div>
+
+                </article>
 
 
-        <div class="controles">
+                <!-- REFLEXÃO -->
 
-            <label for="intensidade">
+                <article class="card">
 
-                Intensidade da radiação:
+                    <div class="icone">
+                        ✨
+                    </div>
 
-                <strong id="valor">
-                    70%
+                    <h3>
+                        Reflexão
+                    </h3>
+
+                    <p>
+                        Acontece quando parte da radiação atinge uma
+                        superfície e retorna para o ambiente.
+                    </p>
+
+                    <div class="formula">
+                        ρ = energia refletida
+                    </div>
+
+                </article>
+
+
+                <!-- TRANSMISSÃO -->
+
+                <article class="card">
+
+                    <div class="icone">
+                        💡
+                    </div>
+
+                    <h3>
+                        Transmissão
+                    </h3>
+
+                    <p>
+                        Ocorre quando a radiação atravessa um material,
+                        como acontece com a luz passando por um vidro.
+                    </p>
+
+                    <div class="formula">
+                        τ = energia transmitida
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div class="equacao">
+
+                <span>
+                    α + ρ + τ = 1
+                </span>
+
+                <p>
+                    A energia incidente pode ser distribuída entre
+                    absorção, reflexão e transmissão.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SIMULADOR
+        ========================== -->
+
+        <section id="simulador" class="secao simulador-secao">
+
+            <div class="cabecalho-secao">
+
+                <span>03 • INTERATIVIDADE</span>
+
+                <h2>
+                    Simulador da radiação solar
+                </h2>
+
+                <p>
+                    Ajuste a intensidade de absorção e observe como
+                    os valores dos fenômenos se modificam.
+                </p>
+
+            </div>
+
+
+            <div class="simulador">
+
+                <div class="controle">
+
+                    <label for="intensidade">
+                        Intensidade de absorção
+                    </label>
+
+                    <input
+                        type="range"
+                        id="intensidade"
+                        min="0"
+                        max="100"
+                        value="70"
+                        oninput="atualizarSimulador(this.value)"
+                    >
+
+                    <div class="valor-slider">
+
+                        <span>0%</span>
+
+                        <strong id="valor">
+                            70%
+                        </strong>
+
+                        <span>100%</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="resultados">
+
+                    <div class="resultado">
+
+                        <span class="resultado-icone">
+                            🔥
+                        </span>
+
+                        <span class="resultado-nome">
+                            Absorção
+                        </span>
+
+                        <strong id="absorção">
+                            70%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resultado">
+
+                        <span class="resultado-icone">
+                            ✨
+                        </span>
+
+                        <span class="resultado-nome">
+                            Reflexão
+                        </span>
+
+                        <strong id="reflexao">
+                            30%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="resultado">
+
+                        <span class="resultado-icone">
+                            💡
+                        </span>
+
+                        <span class="resultado-nome">
+                            Transmissão
+                        </span>
+
+                        <strong id="transmissao">
+                            30%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="visual-simulador">
+
+                    <div class="raio-solar" id="raio">
+                        ☀️
+                    </div>
+
+                    <div class="superficie">
+
+                        <div class="superficie-label">
+                            SUPERFÍCIE
+                        </div>
+
+                    </div>
+
+                    <div class="temperatura">
+
+                        Temperatura estimada:
+                        <strong id="temperatura">
+                            30°C
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             COMPARAÇÃO
+        ========================== -->
+
+        <section id="comparacao" class="secao">
+
+            <div class="cabecalho-secao">
+
+                <span>04 • COMPARAÇÃO</span>
+
+                <h2>
+                    Superfícies claras e escuras
+                </h2>
+
+                <p>
+                    A aparência e as propriedades de uma superfície
+                    influenciam a quantidade de radiação absorvida.
+                </p>
+
+            </div>
+
+
+            <div class="comparacao-grid">
+
+                <div class="superficie-card escura">
+
+                    <div class="cor-superficie"></div>
+
+                    <h3>
+                        Superfície escura
+                    </h3>
+
+                    <p>
+                        Em geral, superfícies escuras tendem a absorver
+                        uma maior quantidade de radiação visível.
+                    </p>
+
+                    <span>
+                        Maior absorção
+                    </span>
+
+                </div>
+
+
+                <div class="superficie-card clara">
+
+                    <div class="cor-superficie"></div>
+
+                    <h3>
+                        Superfície clara
+                    </h3>
+
+                    <p>
+                        Superfícies claras geralmente refletem uma
+                        maior quantidade de luz visível.
+                    </p>
+
+                    <span>
+                        Maior reflexão
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PISCINA
+        ========================== -->
+
+        <section id="piscina" class="secao piscina-secao">
+
+            <div class="cabecalho-secao">
+
+                <span>05 • APLICAÇÃO REAL</span>
+
+                <h2>
+                    A conexão com a piscina olímpica
+                </h2>
+
+            </div>
+
+
+            <div class="piscina-conteudo">
+
+                <div class="piscina-texto">
+
+                    <p>
+                        O conhecimento sobre radiação solar pode ser aplicado
+                        no estudo do aquecimento da água de uma piscina.
+                    </p>
+
+                    <p>
+                        Quando a radiação solar atinge determinadas superfícies,
+                        parte da energia é absorvida e transformada em calor.
+                        Esse processo pode contribuir para aumentar a temperatura
+                        da água.
+                    </p>
+
+                    <p>
+                        No nosso projeto, a piscina é utilizada como exemplo
+                        para relacionar os conteúdos de Física, Tecnociência,
+                        Programação e Robótica.
+                    </p>
+
+                </div>
+
+
+                <div class="piscina-diagrama">
+
+                    <div class="etapa">
+                        <span>☀️</span>
+                        <strong>Sol</strong>
+                        <small>Radiação solar</small>
+                    </div>
+
+                    <div class="seta">
+                        ↓
+                    </div>
+
+                    <div class="etapa">
+                        <span>🌡️</span>
+                        <strong>Absorção</strong>
+                        <small>Energia vira calor</small>
+                    </div>
+
+                    <div class="seta">
+                        ↓
+                    </div>
+
+                    <div class="etapa">
+                        <span>💧</span>
+                        <strong>Água</strong>
+                        <small>Aumento da temperatura</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ROBÓTICA
+        ========================== -->
+
+        <section id="robotica" class="secao">
+
+            <div class="cabecalho-secao">
+
+                <span>06 • ROBÓTICA</span>
+
+                <h2>
+                    Onde entra a tecnologia?
+                </h2>
+
+                <p>
+                    A Robótica pode transformar os conceitos estudados
+                    em um sistema capaz de coletar dados e automatizar ações.
+                </p>
+
+            </div>
+
+
+            <div class="fluxo-robotica">
+
+                <div class="robotica-item">
+
+                    <span class="numero">
+                        01
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Sensor
+                        </h3>
+
+                        <p>
+                            Mede informações do ambiente,
+                            como temperatura.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="robotica-item">
+
+                    <span class="numero">
+                        02
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Arduino
+                        </h3>
+
+                        <p>
+                            Recebe e processa os dados
+                            coletados pelos sensores.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="robotica-item">
+
+                    <span class="numero">
+                        03
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Automação
+                        </h3>
+
+                        <p>
+                            O sistema pode tomar decisões
+                            de acordo com os valores medidos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="robotica-item">
+
+                    <span class="numero">
+                        04
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Resultado
+                        </h3>
+
+                        <p>
+                            Os dados ajudam a compreender
+                            e controlar o aquecimento.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TECNOCIÊNCIA
+        ========================== -->
+
+        <section class="secao tecnociencia">
+
+            <div class="cabecalho-secao">
+
+                <span>07 • TECNOCIÊNCIA</span>
+
+                <h2>
+                    Ciência + Tecnologia
+                </h2>
+
+            </div>
+
+
+            <div class="tecnociencia-grid">
+
+                <div>
+
+                    <h3>
+                        Física
+                    </h3>
+
+                    <p>
+                        Estuda o comportamento da radiação
+                        e as formas de interação com a matéria.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Programação
+                    </h3>
+
+                    <p>
+                        Permite criar o site, simuladores
+                        e sistemas para tratamento de dados.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Robótica
+                    </h3>
+
+                    <p>
+                        Utiliza sensores e controladores
+                        para criar sistemas automatizados.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Sustentabilidade
+                    </h3>
+
+                    <p>
+                        Busca utilizar melhor os recursos naturais
+                        e diminuir desperdícios de energia.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ACESSIBILIDADE
+        ========================== -->
+
+        <section id="acessibilidade" class="secao acessibilidade-secao">
+
+            <div class="cabecalho-secao">
+
+                <span>08 • ACESSIBILIDADE</span>
+
+                <h2>
+                    Um site para todos
+                </h2>
+
+                <p>
+                    A acessibilidade faz parte da proposta do projeto.
+                </p>
+
+            </div>
+
+
+            <div class="acessibilidade-grid">
+
+                <div class="acessibilidade-card">
+
+                    <span>🔤</span>
+
+                    <h3>
+                        Texto ampliado
+                    </h3>
+
+                    <p>
+                        O botão A+ aumenta o tamanho do texto
+                        para facilitar a leitura.
+                    </p>
+
+                </div>
+
+
+                <div class="acessibilidade-card">
+
+                    <span>◐</span>
+
+                    <h3>
+                        Alto contraste
+                    </h3>
+
+                    <p>
+                        O modo de alto contraste melhora
+                        a visualização dos elementos.
+                    </p>
+
+                </div>
+
+
+                <div class="acessibilidade-card">
+
+                    <span>⌨️</span>
+
+                    <h3>
+                        Navegação
+                    </h3>
+
+                    <p>
+                        O site foi desenvolvido pensando também
+                        na navegação por teclado.
+                    </p>
+
+                </div>
+
+
+                <div class="acessibilidade-card">
+
+                    <span>🖐️</span>
+
+                    <h3>
+                        Libras
+                    </h3>
+
+                    <p>
+                        O projeto pode receber recursos de acessibilidade
+                        em Libras para ampliar o acesso ao conteúdo.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PERGUNTAS
+        ========================== -->
+
+        <section id="perguntas" class="secao perguntas-secao">
+
+            <div class="cabecalho-secao">
+
+                <span>09 • REVISÃO</span>
+
+                <h2>
+                    Perguntas e respostas
+                </h2>
+
+                <p>
+                    Teste seus conhecimentos sobre o conteúdo.
+                </p>
+
+            </div>
+
+
+            <div class="perguntas">
+
+                <details>
+
+                    <summary>
+                        Por que superfícies escuras tendem a absorver mais luz visível?
+                    </summary>
+
+                    <p>
+                        Porque geralmente refletem uma menor quantidade
+                        da luz visível e absorvem uma maior parte da energia
+                        recebida.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Qual é a diferença entre absorver e refletir radiação?
+                    </summary>
+
+                    <p>
+                        Na absorção, a energia da radiação é recebida pelo material.
+                        Na reflexão, a radiação retorna para o ambiente.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Uma cobertura transparente pode ajudar a aquecer a piscina?
+                    </summary>
+
+                    <p>
+                        Sim. Uma cobertura transparente pode permitir a passagem
+                        da radiação solar e reduzir parte das perdas de calor,
+                        contribuindo para o aquecimento da água.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Qual é a importância dos sensores?
+                    </summary>
+
+                    <p>
+                        Os sensores permitem medir informações do ambiente,
+                        como temperatura, ajudando o sistema a tomar decisões.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Como a Robótica se relaciona com a Física?
+                    </summary>
+
+                    <p>
+                        A Robótica pode utilizar conhecimentos de Física
+                        para medir, controlar e automatizar fenômenos
+                        estudados na ciência.
+                    </p>
+
+                </details>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CLIMATOLOGIA
+        ========================== -->
+
+        <section class="secao climatologia">
+
+            <div class="cabecalho-secao">
+
+                <span>10 • CLIMATOLOGIA</span>
+
+                <h2>
+                    Por que estudar a radiação solar?
+                </h2>
+
+            </div>
+
+
+            <div class="clima-conteudo">
+
+                <p>
+                    A radiação solar é uma das principais fontes de energia
+                    que movimentam os processos naturais da Terra.
+                </p>
+
+                <p>
+                    Ela influencia a temperatura do solo, da água e do ar,
+                    além de participar de processos relacionados ao clima.
+                </p>
+
+                <p>
+                    Por isso, compreender a absorção, a reflexão e a transmissão
+                    ajuda também a estudar questões ambientais e climáticas.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONCLUSÃO
+        ========================== -->
+
+        <section class="conclusao">
+
+            <div class="conclusao-conteudo">
+
+                <span>
+                    CONCLUSÃO
+                </span>
+
+                <h2>
+                    Sol + Água
+                </h2>
+
+                <p>
+                    Estudar a radiação solar permite compreender como
+                    a energia do Sol interage com diferentes materiais.
+                </p>
+
+                <p>
+                    A partir desse conhecimento, podemos relacionar
+                    Física, Programação, Tecnociência e Robótica para
+                    desenvolver soluções mais eficientes e sustentáveis.
+                </p>
+
+                <strong>
+                    Ciência para entender. Tecnologia para transformar.
                 </strong>
 
-            </label>
-
-
-            <input
-                id="intensidade"
-                type="range"
-                min="0"
-                max="100"
-                value="70"
-                oninput="atualizarSimulador(this.value)"
-            >
-
-
-            <div class="valores">
-
-                <div class="valor">
-
-                    <strong id="absorcao">
-                        49%
-                    </strong>
-
-                    absorção
-
-                </div>
-
-
-                <div class="valor">
-
-                    <strong id="reflexao">
-                        21%
-                    </strong>
-
-                    reflexão
-
-                </div>
-
-
-                <div class="valor">
-
-                    <strong id="transmissao">
-                        30%
-                    </strong>
-
-                    transmissão
-
-                </div>
-
             </div>
 
+        </section>
 
-            <p class="observacao">
+    </main>
 
-                Neste modelo didático, os valores
-                representam uma simulação para facilitar
-                a visualização. Eles não medem uma
-                superfície real.
 
-            </p>
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
 
+    <footer class="rodape">
+
+        <div class="rodape-logo">
+            ☀️ Sol + Água
         </div>
-
-
-        <div
-            class="visual"
-            aria-label="Representação visual de um feixe solar">
-
-            <div
-                class="raio"
-                id="raio">
-            </div>
-
-            <div class="seta absorvida">
-                ↓ energia absorvida
-            </div>
-
-            <div class="seta refletida">
-                ↗ refletida
-            </div>
-
-            <div class="seta transmitida">
-                ↓ transmitida
-            </div>
-
-            <div
-                class="superficie"
-                id="superficie">
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     COMPARAÇÃO
-========================= -->
-
-<section>
-
-    <div class="cabecalho-secao">
-
-        <div class="numero">
-            03 • Comparação
-        </div>
-
-        <h2>
-            Superfícies claras e escuras
-        </h2>
-
-        <p class="descricao">
-            A cor e as propriedades ópticas da superfície
-            influenciam a quantidade de radiação que tende
-            a ser absorvida ou refletida.
-        </p>
-
-    </div>
-
-
-    <div class="comparacao">
-
-
-        <div class="card">
-
-            <h3>
-                Superfície escura
-            </h3>
-
-            <p>
-                Tende a absorver uma parcela maior da
-                luz visível e refletir menos, em comparação
-                com uma superfície clara em condições
-                semelhantes.
-            </p>
-
-            <div class="barra">
-
-                <div
-                    class="preenchimento"
-                    style="width:82%">
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>
-                Superfície clara
-            </h3>
-
-            <p>
-                Tende a refletir uma parcela maior da
-                luz visível, reduzindo a fração absorvida
-                em comparação com uma superfície escura.
-            </p>
-
-            <div class="barra">
-
-                <div
-                    class="preenchimento"
-                    style="width:42%">
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     PISCINA
-========================= -->
-
-<section id="piscina">
-
-    <div class="cabecalho-secao">
-
-        <div class="numero">
-            04 • Projeto da piscina
-        </div>
-
-        <h2>
-            Da teoria para uma aplicação real
-        </h2>
-
-        <p class="descricao">
-            Os conceitos de radiação ajudam a compreender
-            estratégias de aquecimento e controle de
-            temperatura da água.
-        </p>
-
-    </div>
-
-
-    <div class="piscina">
-
-        <div class="piscina-conteudo">
-
-            <div>
-
-                <span class="chip">
-                    SIMULAÇÃO DIDÁTICA
-                </span>
-
-                <div
-                    class="temperatura"
-                    id="temperatura">
-
-                    28.2°C
-
-                </div>
-
-                <p>
-                    Temperatura estimada da água
-                </p>
-
-            </div>
-
-
-            <div class="chips">
-
-                <span class="chip">
-                    ☀ Radiação solar
-                </span>
-
-                <span class="chip">
-                    🌡 Sensor
-                </span>
-
-                <span class="chip">
-                    ⚙ Automação
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div
-        class="grade"
-        style="margin-top:18px">
-
-
-        <article class="card">
-
-            <h3>
-                Captação
-            </h3>
-
-            <p>
-                A radiação solar fornece energia que
-                pode contribuir para o aquecimento
-                da água ou de componentes do sistema.
-            </p>
-
-        </article>
-
-
-        <article class="card">
-
-            <h3>
-                Monitoramento
-            </h3>
-
-            <p>
-                Um sensor de temperatura pode acompanhar
-                a água e enviar os dados para o sistema
-                de controle.
-            </p>
-
-        </article>
-
-
-        <article class="card">
-
-            <h3>
-                Controle
-            </h3>
-
-            <p>
-                O projeto de robótica pode usar esses
-                dados para acionar ou desligar um
-                dispositivo de aquecimento conforme
-                uma condição programada.
-            </p>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     ROBÓTICA
-========================= -->
-
-<section id="robotica">
-
-    <div class="cabecalho-secao">
-
-        <div class="numero">
-            05 • Robótica + Tecnociência
-        </div>
-
-        <h2>
-            Como as áreas se conectam?
-        </h2>
-
-        <p class="descricao">
-            O projeto integra programação, física,
-            tecnociência e robótica em uma aplicação
-            relacionada à piscina.
-        </p>
-
-    </div>
-
-
-    <div class="passos">
-
-
-        <div class="card passo">
-
-            <div>
-
-                <h3>
-                    Programação
-                </h3>
-
-                <p>
-                    Criação do site, simuladores e
-                    lógica de controle.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="card passo">
-
-            <div>
-
-                <h3>
-                    Física
-                </h3>
-
-                <p>
-                    Estudo da radiação solar, absorção,
-                    reflexão, transmissão e transferência
-                    de energia.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="card passo">
-
-            <div>
-
-                <h3>
-                    Tecnociência
-                </h3>
-
-                <p>
-                    Uso do conhecimento científico para
-                    pensar uma solução tecnológica ligada
-                    a uma necessidade real.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="card passo">
-
-            <div>
-
-                <h3>
-                    Robótica
-                </h3>
-
-                <p>
-                    Sensores, atuadores e programação
-                    podem transformar a medição de
-                    temperatura em uma ação automática.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     ACESSIBILIDADE
-========================= -->
-
-<section>
-
-    <div class="cabecalho-secao">
-
-        <div class="numero">
-            06 • Acessibilidade
-        </div>
-
-        <h2>
-            Um conteúdo para diferentes formas de aprender
-        </h2>
-
-        <p class="descricao">
-            O site possui navegação por teclado,
-            contraste reforçado, controle de tamanho
-            do texto, linguagem direta e estrutura
-            semântica.
-        </p>
-
-    </div>
-
-
-    <div class="grade">
-
-
-        <article class="card">
-
-            <h3>
-                ⌨ Teclado
-            </h3>
-
-            <p>
-                Os elementos interativos podem ser
-                acessados sem depender apenas do mouse.
-            </p>
-
-        </article>
-
-
-        <article class="card">
-
-            <h3>
-                👁 Contraste
-            </h3>
-
-            <p>
-                O botão de contraste aumenta a diferença
-                entre texto e fundo.
-            </p>
-
-        </article>
-
-
-        <article class="card">
-
-            <h3>
-                🤟 Libras
-            </h3>
-
-            <p>
-                O conteúdo pode ser complementado
-                por ferramentas de tradução para Libras.
-            </p>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     PERGUNTAS
-========================= -->
-
-<section id="perguntas">
-
-    <div class="cabecalho-secao">
-
-        <div class="numero">
-            07 • Perguntas
-        </div>
-
-        <h2>
-            Teste seus conhecimentos
-        </h2>
-
-    </div>
-
-
-    <div class="perguntas">
-
-
-        <details>
-
-            <summary>
-                1. Por que superfícies escuras tendem
-                a absorver mais luz visível?
-            </summary>
-
-            <p>
-                Porque absorvem uma parcela maior da luz
-                que recebem e refletem uma parcela menor,
-                em comparação com superfícies claras em
-                condições semelhantes.
-            </p>
-
-        </details>
-
-
-        <details>
-
-            <summary>
-                2. Qual é a diferença entre absorver
-                e refletir radiação?
-            </summary>
-
-            <p>
-                Absorver significa receber a energia da
-                radiação e incorporá-la ao material;
-                refletir significa devolver parte dessa
-                radiação para o ambiente.
-            </p>
-
-        </details>
-
-
-        <details>
-
-            <summary>
-                3. Uma cobertura transparente pode
-                ajudar a aquecer a piscina?
-            </summary>
-
-            <p>
-                Sim. Uma cobertura transparente pode
-                permitir a entrada de radiação solar e
-                reduzir algumas perdas de energia,
-                contribuindo para o aquecimento,
-                dependendo do material e das condições.
-            </p>
-
-        </details>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CONCLUSÃO
-========================= -->
-
-<section>
-
-    <div class="cabecalho-secao">
-
-        <div class="numero">
-            08 • Conclusão
-        </div>
-
-        <h2>
-            Ciência aplicada ao cotidiano
-        </h2>
-
-        <p class="descricao">
-            Estudar absorção, reflexão e transmissão
-            mostra que a radiação solar não é apenas
-            um conteúdo de Física: ela pode ser analisada
-            para compreender situações reais e pensar
-            soluções tecnológicas mais eficientes.
-        </p>
-
-    </div>
-
-
-    <div class="card">
 
         <p>
-
-            <strong>
-                Resumo:
-            </strong>
-
-            A radiação que chega a uma superfície pode
-            ser absorvida, refletida ou transmitida.
-            Esses fenômenos dependem das características
-            do material e podem ser usados para analisar
-            o aquecimento da água, o comportamento de
-            coberturas e sistemas automatizados de controle.
-
+            Projeto Integrador CEP • 3º Trimestre
         </p>
 
-    </div>
+        <p>
+            Absorção, Reflexão e Transmissão da Radiação Solar
+        </p>
 
-</section>
+        <div class="rodape-tecnologias">
 
-</main>
+            <span>Física</span>
+            <span>Programação</span>
+            <span>Robótica</span>
+            <span>Tecnociência</span>
 
+        </div>
 
-<!-- =========================
-     RODAPÉ
-========================= -->
+        <p class="direitos">
+            Projeto desenvolvido para apresentação escolar.
+        </p>
 
-<footer>
-
-    <p>
-        <strong>SOL + ÁGUA</strong>
-        • Projeto Integrador CEP
-        • 3º trimestre
-    </p>
-
-    <p>
-        Absorção, Reflexão e Transmissão
-        da Radiação Solar
-    </p>
-
-</footer>
+    </footer>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+    <!-- =========================
+         JAVASCRIPT EXTERNO
+    ========================== -->
 
-<script>
-
-    function atualizarSimulador(valor) {
-
-        valor = Number(valor);
-
-        document.getElementById("valor").textContent =
-            valor + "%";
-
-
-        document.getElementById("absorção");
-
-        document.getElementById("absorção");
-
-
-        document.getElementById("absorção").textContent =
-            Math.round(valor * 0.70) + "%";
-
-
-        document.getElementById("reflexao").textContent =
-            Math.round(valor * 0.30) + "%";
-
-
-        document.getElementById("transmissao").textContent =
-            (100 - valor) + "%";
-
-
-        document.getElementById("raio").style.opacity =
-            Math.max(0.12, valor / 100);
-
-
-        document.getElementById("temperatura").textContent =
-            (24 + valor * 0.06).toFixed(1) + "°C";
-
-    }
-
-
-    function aumentarTexto() {
-
-        document.body.classList.toggle("texto-grande");
-
-    }
-
-
-    function altoContraste() {
-
-        document.body.classList.toggle("alto-contraste");
-
-    }
-
-
-    atualizarSimulador(70);
-
-</script>
-
+    <script src="script.js"></script>
 
 </body>
 
-  </html>
+            </html>
